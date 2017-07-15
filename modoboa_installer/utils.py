@@ -139,7 +139,7 @@ def copy_from_template(template, dest, context):
         fp.write(ConfigFileTemplate(buf).substitute(context))
 
 
-def check_config_file(dest):
+def check_config_file(dest, domain):
     """Create a new installer config file if needed."""
     if os.path.exists(dest):
         return
@@ -152,7 +152,8 @@ def check_config_file(dest):
         "mysql_password": make_password(),
         "modoboa_password": make_password(),
         "amavis_password": make_password(),
-        "sa_password": make_password()
+        "sa_password": make_password(),
+        "domain_name": domain
     }
     with open(dest, "w") as fp:
         fp.write(string.Template(buf).substitute(context))

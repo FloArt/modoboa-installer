@@ -124,7 +124,7 @@ class MySQL(Database):
     """MySQL backend."""
 
     packages = {
-        "deb": ["mysql-server", "libmysqlclient-dev"],
+        "deb": ["mariadb-server", "libmysqlclient-dev"],
         "rpm": ["mariadb", "mariadb-devel", "mariadb-server"],
     }
     service = "mariadb" if package.backend.FORMAT == "rpm" else "mysql"

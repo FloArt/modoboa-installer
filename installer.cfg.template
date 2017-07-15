@@ -1,20 +1,22 @@
 [general]
 # %(domain)s is the value specified when launching the installer
 hostname = mail.%(domain)s
+tls_key_file = /etc/letsencrypt/live/mail.%(domain)/privkey.pem
+tls_cert_file = /etc/letsencrypt/live/mail.%(domain)/fullchain.pem
 
 [certificate]
-generate = true
+generate = false
 # Choose between self-signed or letsencrypt
-type = self-signed
+# type = self-signed
 
 [letsencrypt]
 email = admin@example.com
 
 [database]
 # Select database engine : postgres or mysql
-engine = postgres
-#engine = mysql
-host = 127.0.0.1
+# engine = postgres
+engine = mysql
+host = localhost
 install = true
 
 [postgres]
@@ -37,8 +39,8 @@ dbname = modoboa
 dbuser = modoboa
 dbpassword = $modoboa_password
 # Extensions to install
-# also available: modoboa-radicale modoboa-dmarc modoboa-imap-migration
-extensions = modoboa-amavis modoboa-pdfcredentials modoboa-postfix-autoreply modoboa-sievefilters modoboa-stats modoboa-webmail modoboa-contacts
+# also available: modoboa-webmail modoboa-contacts modoboa-radicale modoboa-dmarc modoboa-imap-migration
+extensions = modoboa-amavis modoboa-pdfcredentials modoboa-postfix-autoreply modoboa-sievefilters modoboa-stats
 
 # Deploy Modoboa and enable development mode
 devmode = false
@@ -74,10 +76,10 @@ mailboxes_owner = vmail
 # Example: pop3
 extra_protocols =
 # Replace localhost with your domain
-postmaster_address = postmaster@localhost
+postmaster_address = postmaster@%(domain)
 
 [nginx]
-enabled = true
+enabled = false
 config_dir = /etc/nginx
 
 [razor]
@@ -98,6 +100,6 @@ dbuser = spamassassin
 dbpassword = $sa_password
 
 [uwsgi]
-enabled = true 
+enabled = false
 config_dir = /etc/uwsgi
 nb_processes = 2

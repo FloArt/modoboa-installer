@@ -22,7 +22,7 @@ class Modoboa(base.Installer):
     no_daemon = True
     packages = {
         "deb": [
-            "build-essential", "python-dev", "libxml2-dev", "libxslt-dev",
+            "build-essential", "python3-dev", "libxml2-dev", "libxslt-dev",
             "libjpeg-dev", "librrd-dev", "rrdtool", "libffi-dev", "cron"],
         "rpm": [
             "gcc", "gcc-c++", "python-devel", "libxml2-devel", "libxslt-devel",
@@ -84,7 +84,7 @@ class Modoboa(base.Installer):
         if self.dbengine == "postgres":
             packages.append("psycopg2")
         else:
-            packages.append("MYSQL-Python")
+            packages.append("mysqlclient")
         if sys.version_info.major == 2 and sys.version_info.micro < 9:
             # Add extra packages to fix the SNI issue
             packages += ["pyOpenSSL"]

@@ -45,5 +45,5 @@ def setup_virtualenv(path, sudo_user=None):
         packages.append("virtualenv")
     package.backend.install_many(packages)
     with utils.settings(sudo_user=sudo_user):
-        utils.exec_cmd("virtualenv {}".format(path))
+        utils.exec_cmd("virtualenv -p python3 {}".format(path))
         install_package("pip", venv=path, upgrade=True)

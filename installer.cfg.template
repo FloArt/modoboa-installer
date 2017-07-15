@@ -1,8 +1,8 @@
 [general]
 # %(domain)s is the value specified when launching the installer
 hostname = mail.%(domain)s
-tls_key_file = /etc/letsencrypt/live/mail.%(domain)/privkey.pem
-tls_cert_file = /etc/letsencrypt/live/mail.%(domain)/fullchain.pem
+tls_key_file = /etc/letsencrypt/live/mail.%(domain)s/privkey.pem
+tls_cert_file = /etc/letsencrypt/live/mail.%(domain)s/fullchain.pem
 
 [certificate]
 generate = false
@@ -76,7 +76,7 @@ mailboxes_owner = vmail
 # Example: pop3
 extra_protocols =
 # Replace localhost with your domain
-postmaster_address = postmaster@%(domain)
+postmaster_address = postmaster@%(domain)s
 
 [nginx]
 enabled = false

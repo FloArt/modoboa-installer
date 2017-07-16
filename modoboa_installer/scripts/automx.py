@@ -56,7 +56,7 @@ class Automx(base.Installer):
         python.setup_virtualenv(self.venv_path, sudo_user=self.user)
         packages = [
             "future", "lxml", "ipaddress", "sqlalchemy", "python3-memcached",
-            "python3-dateutil", "configparser"
+            "python-dateutil", "configparser"
         ]
         python.install_packages(packages, self.venv_path, sudo_user=self.user)
         target = "{}/master.zip".format(self.home_dir)
